@@ -1,0 +1,335 @@
+:root {
+  --bg-color: #4E5933; /* Olive green */
+  --text-main: #FFFFFF;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --btn-bg: #000000;
+  --btn-text: #FFFFFF;
+  --option-bg: rgba(255, 255, 255, 0.1);
+  --option-hover: rgba(255, 255, 255, 0.2);
+  --option-border: rgba(255, 255, 255, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background-color: var(--bg-color) !important;
+  background-image: none !important;
+  background: var(--bg-color) !important;
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 500px;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.view {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  overflow-y: auto;
+}
+
+.view.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.quiz-wrapper, .result-wrapper {
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+
+.main-image {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 32px;
+  border-radius: 16px;
+}
+
+.main-title {
+  font-size: 32px;
+  line-height: 1.4;
+  font-weight: 900;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+/* Buttons */
+.btn {
+  border: none;
+  outline: none;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn.primary {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  padding: 16px 40px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  width: auto;
+  min-width: 200px;
+}
+
+.btn.primary:hover {
+  transform: scale(1.02);
+  background: #222;
+}
+
+/* Options */
+.options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.option-btn {
+  background: var(--option-bg);
+  border: 1px solid var(--option-border);
+  padding: 20px;
+  border-radius: 16px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-main);
+  transition: all 0.2s ease;
+}
+
+.option-btn:hover {
+  background: var(--option-hover);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.emoji {
+  font-size: 24px;
+}
+
+/* Quiz UI */
+.quiz-header {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 100px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: var(--text-main);
+  width: 0%;
+  border-radius: 100px;
+  transition: width 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.progress-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-align: right;
+}
+
+.question-text {
+  font-size: 22px;
+  margin-bottom: 32px;
+  text-align: left;
+  width: 100%;
+}
+
+/* Result UI */
+.result-card {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 24px;
+  padding: 32px 24px;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.type-subtitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-secondary) !important;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.type-name {
+  font-size: 32px;
+  font-weight: 900;
+  margin-bottom: 24px;
+  color: var(--text-main);
+}
+
+.quote {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  color: var(--text-main);
+}
+
+.description {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.divider {
+  height: 1px;
+  background: rgba(255,255,255,0.2);
+  margin: 24px 0;
+}
+
+.solution-box {
+  background: rgba(0,0,0,0.3);
+  padding: 20px;
+  border-radius: 16px;
+}
+
+.solution-box h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.solution-box p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.waitlist-section {
+  text-align: center;
+  padding-bottom: 60px;
+}
+
+.waitlist-section h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.waitlist-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.waitlist-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.waitlist-form input {
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: 50px;
+  border: none;
+  background: rgba(255,255,255,0.9);
+  font-size: 16px;
+  font-family: inherit;
+  outline: none;
+  text-align: center;
+}
+
+.waitlist-form input:focus {
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
+}
+
+.success-msg {
+  margin-top: 16px;
+  color: #A5D6A7;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Footer Banner like OOOPEN Lab */
+.footer-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #111;
+  color: #888;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+  z-index: 10;
+  font-family: 'Inter', sans-serif;
+}
+.footer-banner span {
+  color: #FFF;
+  font-weight: bold;
+}
